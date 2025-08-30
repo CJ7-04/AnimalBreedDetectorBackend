@@ -1,0 +1,98 @@
+{
+  "breeds": [
+    {
+      "name": "Sahiwal",
+      "species": "Cattle",
+      "aliases": [
+        "Sahiwal Cattle"
+      ],
+      "region": "Punjab/Hariana/Pakistan"
+    },
+    {
+      "name": "Gir",
+      "species": "Cattle",
+      "aliases": [
+        "Gyr"
+      ],
+      "region": "Gujarat"
+    },
+    {
+      "name": "Kankrej",
+      "species": "Cattle",
+      "aliases": [
+        "Kankrej Cattle"
+      ],
+      "region": "Gujarat/Rajasthan"
+    },
+    {
+      "name": "Tharparkar",
+      "species": "Cattle",
+      "aliases": [
+        "White Sindhi"
+      ],
+      "region": "Rajasthan/Pakistan"
+    },
+    {
+      "name": "Red Sindhi",
+      "species": "Cattle",
+      "aliases": [
+        "Lal Sindhi"
+      ],
+      "region": "Sindh"
+    },
+    {
+      "name": "Holstein Friesian (Ind Cross)",
+      "species": "Cattle",
+      "aliases": [
+        "HF Cross",
+        "Holstein Cross"
+      ],
+      "region": "Pan-India"
+    },
+    {
+      "name": "Jersey (Ind Cross)",
+      "species": "Cattle",
+      "aliases": [
+        "Jersey Cross"
+      ],
+      "region": "Pan-India"
+    },
+    {
+      "name": "Murrah",
+      "species": "Buffalo",
+      "aliases": [],
+      "region": "Haryana/Punjab/Delhi"
+    },
+    {
+      "name": "Jaffarabadi",
+      "species": "Buffalo",
+      "aliases": [],
+      "region": "Gujarat"
+    },
+    {
+      "name": "Mehsana",
+      "species": "Buffalo",
+      "aliases": [],
+      "region": "Gujarat"
+    },
+    {
+      "name": "Nili-Ravi",
+      "species": "Buffalo",
+      "aliases": [],
+      "region": "Punjab/Pakistan"
+    },
+    {
+      "name": "Bhadawari",
+      "species": "Buffalo",
+      "aliases": [],
+      "region": "UP/MP"
+    },
+    {
+      "name": "Pandharpuri",
+      "species": "Buffalo",
+      "aliases": [],
+      "region": "Maharashtra"
+    }
+  ],
+  "notes": "Extend this list as needed. Keep dataset folder names exactly matching 'name' or provide a mapping in labels.json."
+}
