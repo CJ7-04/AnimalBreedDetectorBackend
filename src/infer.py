@@ -3,6 +3,7 @@ import torch.nn as nn
 import torchvision.models as models
 import torchvision.transforms as transforms
 from fastapi import FastAPI, UploadFile, File
+from fastapi.middleware.cors import CORSMiddleware
 from PIL import Image
 import io
 import json
@@ -62,6 +63,15 @@ def load_image(image_bytes):
 # -------------------------
 app = FastAPI()
 
+# Enable CORS for frontend access
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # adjust to your frontend domain for production
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 DEVICE = "cpu"
 MODEL_PATH = "models/model.pth"
 LABELS_PATH = "models/labels.json"
@@ -106,3 +116,4 @@ def get_breeds():
     if LABELS:
         return LABELS
     return {"error": "Labels file not found or empty"}
+
