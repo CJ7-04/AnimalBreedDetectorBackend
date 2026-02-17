@@ -1,98 +1,46 @@
 {
   "breeds": [
     {
-      "name": "Sahiwal",
-      "species": "Cattle",
-      "aliases": [
-        "Sahiwal Cattle"
-      ],
-      "region": "Punjab/Hariana/Pakistan"
-    },
-    {
       "name": "Gir",
       "species": "Cattle",
-      "aliases": [
-        "Gyr"
-      ],
-      "region": "Gujarat"
+      "region": "Gujarat",
+      "milk_yield": "8–12 liters/day",
+      "uses": "High milk production & breeding",
+      "local_names": {
+        "hi": "गिर गाय"
+      },
+      "farmer_tips": {
+        "en": "Needs shade and adequate water in summer.",
+        "hi": "गर्मी में छाया और पर्याप्त पानी जरूरी है।"
+      }
     },
     {
-      "name": "Kankrej",
+      "name": "Sahiwal",
       "species": "Cattle",
-      "aliases": [
-        "Kankrej Cattle"
-      ],
-      "region": "Gujarat/Rajasthan"
-    },
-    {
-      "name": "Tharparkar",
-      "species": "Cattle",
-      "aliases": [
-        "White Sindhi"
-      ],
-      "region": "Rajasthan/Pakistan"
-    },
-    {
-      "name": "Red Sindhi",
-      "species": "Cattle",
-      "aliases": [
-        "Lal Sindhi"
-      ],
-      "region": "Sindh"
-    },
-    {
-      "name": "Holstein Friesian (Ind Cross)",
-      "species": "Cattle",
-      "aliases": [
-        "HF Cross",
-        "Holstein Cross"
-      ],
-      "region": "Pan-India"
-    },
-    {
-      "name": "Jersey (Ind Cross)",
-      "species": "Cattle",
-      "aliases": [
-        "Jersey Cross"
-      ],
-      "region": "Pan-India"
+      "region": "Punjab & Haryana",
+      "milk_yield": "10–16 liters/day",
+      "uses": "Dairy production",
+      "local_names": {
+        "hi": "साहीवाल गाय"
+      },
+      "farmer_tips": {
+        "en": "Highly heat tolerant and disease resistant.",
+        "hi": "गर्मी सहनशील और रोग प्रतिरोधक।"
+      }
     },
     {
       "name": "Murrah",
       "species": "Buffalo",
-      "aliases": [],
-      "region": "Haryana/Punjab/Delhi"
-    },
-    {
-      "name": "Jaffarabadi",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "Gujarat"
-    },
-    {
-      "name": "Mehsana",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "Gujarat"
-    },
-    {
-      "name": "Nili-Ravi",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "Punjab/Pakistan"
-    },
-    {
-      "name": "Bhadawari",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "UP/MP"
-    },
-    {
-      "name": "Pandharpuri",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "Maharashtra"
+      "region": "Haryana & Punjab",
+      "milk_yield": "12–18 liters/day",
+      "uses": "High-fat milk production",
+      "local_names": {
+        "hi": "मुर्रा भैंस"
+      },
+      "farmer_tips": {
+        "en": "Requires regular bathing for better productivity.",
+        "hi": "उत्पादन बढ़ाने के लिए नियमित स्नान आवश्यक है।"
+      }
     }
-  ],
-  "notes": "Extend this list as needed. Keep dataset folder names exactly matching 'name' or provide a mapping in labels.json."
+  ]
 }
