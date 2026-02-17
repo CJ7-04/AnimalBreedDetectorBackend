@@ -61,7 +61,7 @@ def load_image(image_bytes):
 # -------------------------
 # FastAPI app
 # -------------------------
-app = FastAPI()
+
 
 # Enable CORS for frontend access
 app.add_middleware(
@@ -93,7 +93,7 @@ model = load_model(MODEL_PATH, NUM_CLASSES, DEVICE)
 def root():
     return {"message": "Backend is running!"}
 
-@app.post("/predict")
+
 async def predict(file: UploadFile = File(...)):
     image_bytes = await file.read()
     tensor = load_image(image_bytes).to(DEVICE)
