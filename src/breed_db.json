@@ -1,98 +1,116 @@
 {
   "breeds": [
     {
-      "name": "Sahiwal",
-      "species": "Cattle",
-      "aliases": [
-        "Sahiwal Cattle"
-      ],
-      "region": "Punjab/Hariana/Pakistan"
-    },
-    {
       "name": "Gir",
       "species": "Cattle",
-      "aliases": [
-        "Gyr"
-      ],
-      "region": "Gujarat"
+      "aliases": ["Gyr", "Gir Cow"],
+      "local_name": "गिर गाय",
+      "region": "Gujarat",
+      "milk_yield": "10–15 liters/day",
+      "climate": "Hot & dry tolerant",
+      "identification": "Red or spotted coat, long curved horns, domed forehead, pendulous ears",
+      "farmer_tip": "High milk fat and excellent heat tolerance."
+    },
+    {
+      "name": "Gojri",
+      "species": "Cattle",
+      "aliases": ["Gujari", "Gujjar Cattle"],
+      "local_name": "गोजरी गाय",
+      "region": "Rajasthan & Haryana",
+      "milk_yield": "6–10 liters/day",
+      "climate": "Semi-arid tolerant",
+      "identification": "Medium size, grey to white coat, strong legs",
+      "farmer_tip": "Suitable for both milk and draught work."
     },
     {
       "name": "Kankrej",
       "species": "Cattle",
-      "aliases": [
-        "Kankrej Cattle"
-      ],
-      "region": "Gujarat/Rajasthan"
-    },
-    {
-      "name": "Tharparkar",
-      "species": "Cattle",
-      "aliases": [
-        "White Sindhi"
-      ],
-      "region": "Rajasthan/Pakistan"
-    },
-    {
-      "name": "Red Sindhi",
-      "species": "Cattle",
-      "aliases": [
-        "Lal Sindhi"
-      ],
-      "region": "Sindh"
-    },
-    {
-      "name": "Holstein Friesian (Ind Cross)",
-      "species": "Cattle",
-      "aliases": [
-        "HF Cross",
-        "Holstein Cross"
-      ],
-      "region": "Pan-India"
-    },
-    {
-      "name": "Jersey (Ind Cross)",
-      "species": "Cattle",
-      "aliases": [
-        "Jersey Cross"
-      ],
-      "region": "Pan-India"
+      "aliases": ["Kankrej Cow"],
+      "local_name": "कांकरेज",
+      "region": "Gujarat & Rajasthan",
+      "milk_yield": "8–12 liters/day",
+      "climate": "Heat tolerant",
+      "identification": "Silver-grey coat, lyre-shaped horns, muscular body",
+      "farmer_tip": "Strong draught power and good disease resistance."
     },
     {
       "name": "Murrah",
       "species": "Buffalo",
-      "aliases": [],
-      "region": "Haryana/Punjab/Delhi"
+      "aliases": ["Murrah Bhains"],
+      "local_name": "मुर्रा भैंस",
+      "region": "Haryana & Punjab",
+      "milk_yield": "12–18 liters/day",
+      "climate": "Adaptable to hot climates",
+      "identification": "Jet black body, tightly curled horns, heavy udder",
+      "farmer_tip": "Produces high-fat milk ideal for dairy business."
     },
     {
-      "name": "Jaffarabadi",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "Gujarat"
+      "name": "Nagori",
+      "species": "Cattle",
+      "aliases": ["Nagauri"],
+      "local_name": "नागौरी",
+      "region": "Rajasthan",
+      "milk_yield": "3–5 liters/day",
+      "climate": "Arid climate specialist",
+      "identification": "Tall, white body, long legs, strong shoulders",
+      "farmer_tip": "Best draught breed for ploughing and cart pulling."
     },
     {
-      "name": "Mehsana",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "Gujarat"
+      "name": "Ongole",
+      "species": "Cattle",
+      "aliases": ["Ongle", "Nellore"],
+      "local_name": "ओंगोल",
+      "region": "Andhra Pradesh",
+      "milk_yield": "5–8 liters/day",
+      "climate": "Heat & drought tolerant",
+      "identification": "Large white body, hump prominent, short horns",
+      "farmer_tip": "Highly resistant to diseases and heat stress."
     },
     {
-      "name": "Nili-Ravi",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "Punjab/Pakistan"
+      "name": "Rathi",
+      "species": "Cattle",
+      "aliases": ["Rathi Cow"],
+      "local_name": "राठी गाय",
+      "region": "Rajasthan",
+      "milk_yield": "6–10 liters/day",
+      "climate": "Hot & dry tolerant",
+      "identification": "Brown with white patches, medium build",
+      "farmer_tip": "Good milk producer suitable for desert regions."
     },
     {
-      "name": "Bhadawari",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "UP/MP"
+      "name": "Red Sindhi",
+      "species": "Cattle",
+      "aliases": ["Lal Sindhi"],
+      "local_name": "लाल सिंधी",
+      "region": "Sindh & India",
+      "milk_yield": "8–12 liters/day",
+      "climate": "Heat tolerant",
+      "identification": "Deep reddish coat, compact body",
+      "farmer_tip": "Performs well in hot climates with good milk yield."
     },
     {
-      "name": "Pandharpuri",
-      "species": "Buffalo",
-      "aliases": [],
-      "region": "Maharashtra"
+      "name": "Sahiwal",
+      "species": "Cattle",
+      "aliases": ["Sahiwal Cow"],
+      "local_name": "साहीवाल",
+      "region": "Punjab & Haryana",
+      "milk_yield": "10–16 liters/day",
+      "climate": "Hot & humid tolerant",
+      "identification": "Reddish-brown coat, loose skin, heavy udder",
+      "farmer_tip": "Highly disease resistant and ideal for dairy farming."
+    },
+    {
+      "name": "Tharparkar",
+      "species": "Cattle",
+      "aliases": ["White Sindhi", "Thari"],
+      "local_name": "थारपारकर",
+      "region": "Rajasthan & Pakistan",
+      "milk_yield": "8–12 liters/day",
+      "climate": "Desert climate tolerant",
+      "identification": "White to light grey coat, medium horns",
+      "farmer_tip": "Thrives in drought-prone areas with minimal feed."
     }
   ],
-  "notes": "Extend this list as needed. Keep dataset folder names exactly matching 'name' or provide a mapping in labels.json."
+  "notes": "Dataset folder names must match 'name'. Extend advisory fields as needed."
 }
+
