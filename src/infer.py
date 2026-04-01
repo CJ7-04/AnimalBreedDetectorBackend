@@ -10,34 +10,27 @@ import json
 import os
 
 # -------------------------
-# Model definition
+# Build model (🔥 SAME AS TRAINING)
 # -------------------------
-class BreedClassifier(nn.Module):
-    def __init__(self, num_classes):
-        super().__init__()
-        self.model = self.model = models.efficientnet_b0(weights=None)
-        in_features = self.model.classifier[1].in_features
-        self.model.classifier[1] = nn.Linear(in_features, num_classes)
-
-    def forward(self, x):
-        return self.model(x)
+def build_model(num_classes):
+    model = models.efficientnet_b0(weights=None)
+    in_features = model.classifier[1].in_features
+    model.classifier[1] = nn.Linear(in_features, num_classes)
+    return model
 
 # -------------------------
-# Model loader
+# Load model
 # -------------------------
 def load_model(checkpoint_path, num_classes, device="cpu"):
-    model = BreedClassifier(num_classes)
-
     if not os.path.exists(checkpoint_path):
         raise FileNotFoundError(f"Checkpoint not found: {checkpoint_path}")
     
+    model = build_model(num_classes)
+
     checkpoint = torch.load(checkpoint_path, map_location=device)
 
-    # ✅ STRICT loading (IMPORTANT)
-    if isinstance(checkpoint, dict) and "model_state" in checkpoint:
-        model.load_state_dict(checkpoint["model_state"])
-    else:
-        model.load_state_dict(checkpoint)
+    # ✅ strict loading (no mismatch allowed)
+    model.load_state_dict(checkpoint["model_state"])
 
     model.eval()
     return model.to(device)
@@ -52,7 +45,7 @@ def load_image(image_bytes):
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
     ])
-    image = Image.open(io.BytesIO(image_bytes)).convert("RGB") #image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+    image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
     return transform(image).unsqueeze(0)
 
 # -------------------------
@@ -60,10 +53,9 @@ def load_image(image_bytes):
 # -------------------------
 app = FastAPI()
 
-# Enable CORS for frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # adjust to your frontend domain for production
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -73,18 +65,27 @@ DEVICE = "cpu"
 MODEL_PATH = "models/model.pth"
 LABELS_PATH = "models/labels.json"
 
+# -------------------------
 # Load labels
+# -------------------------
 if os.path.exists(LABELS_PATH):
     with open(LABELS_PATH, "r") as f:
         LABELS = json.load(f)
 
+    # convert keys to int
     LABELS = {int(k): v for k, v in LABELS.items()}
-
 else:
     LABELS = {}
 
 NUM_CLASSES = len(LABELS)
+
+# -------------------------
+# Load model
+# -------------------------
 model = load_model(MODEL_PATH, NUM_CLASSES, DEVICE)
+
+print("✅ Model loaded successfully")
+print("Classes:", NUM_CLASSES)
 
 # -------------------------
 # Routes
@@ -99,10 +100,10 @@ async def predict(file: UploadFile = File(...)):
     tensor = load_image(image_bytes).to(DEVICE)
 
     with torch.no_grad():
-     outputs = model(tensor)
-     probs = torch.softmax(outputs, dim=1)
+        outputs = model(tensor)
+        probs = torch.softmax(outputs, dim=1)
 
-    # Top-3 predictions
+    # 🔥 Top-3 predictions
     top_probs, top_idxs = torch.topk(probs, 3)
 
     results = []
@@ -116,8 +117,9 @@ async def predict(file: UploadFile = File(...)):
         })
 
     return {
-    "top_predictions": results
-}
+        "top_predictions": results
+    }
+
 @app.get("/breeds")
 def get_breeds():
     if LABELS:
