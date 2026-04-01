@@ -27,20 +27,17 @@ class BreedClassifier(nn.Module):
 # -------------------------
 def load_model(checkpoint_path, num_classes, device="cpu"):
     model = BreedClassifier(num_classes)
+
     if not os.path.exists(checkpoint_path):
         raise FileNotFoundError(f"Checkpoint not found: {checkpoint_path}")
     
     checkpoint = torch.load(checkpoint_path, map_location=device)
 
-    if isinstance(checkpoint, dict):
-        if "model_state" in checkpoint:
-            model.load_state_dict(checkpoint["model_state"], strict=False)
-        elif "state_dict" in checkpoint:
-            model.load_state_dict(checkpoint["state_dict"], strict=False)
-        else:
-            model.load_state_dict(checkpoint, strict=False)
+    # ✅ STRICT loading (IMPORTANT)
+    if isinstance(checkpoint, dict) and "model_state" in checkpoint:
+        model.load_state_dict(checkpoint["model_state"])
     else:
-        model.load_state_dict(checkpoint, strict=False)
+        model.load_state_dict(checkpoint)
 
     model.eval()
     return model.to(device)
