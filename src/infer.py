@@ -15,7 +15,7 @@ import os
 class BreedClassifier(nn.Module):
     def __init__(self, num_classes):
         super().__init__()
-        self.model = models.efficientnet_b0(weights=models.EfficientNet_B0_Weights.DEFAULT)
+        self.model = self.model = models.efficientnet_b0(weights=None)
         in_features = self.model.classifier[1].in_features
         self.model.classifier[1] = nn.Linear(in_features, num_classes)
 
@@ -55,7 +55,7 @@ def load_image(image_bytes):
         transforms.Normalize(mean=[0.485, 0.456, 0.406],
                              std=[0.229, 0.224, 0.225]),
     ])
-    image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
+    image = Image.open(io.BytesIO(image_bytes)).convert("RGB") #image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
     return transform(image).unsqueeze(0)
 
 # -------------------------
@@ -80,6 +80,9 @@ LABELS_PATH = "models/labels.json"
 if os.path.exists(LABELS_PATH):
     with open(LABELS_PATH, "r") as f:
         LABELS = json.load(f)
+
+    LABELS = {int(k): v for k, v in LABELS.items()}
+
 else:
     LABELS = {}
 
@@ -99,18 +102,25 @@ async def predict(file: UploadFile = File(...)):
     tensor = load_image(image_bytes).to(DEVICE)
 
     with torch.no_grad():
-        outputs = model(tensor)
-        probs = torch.softmax(outputs, dim=1)  # convert logits to probabilities
-        predicted_idx = int(probs.argmax(dim=1).item())
-        confidence = float(probs[0, predicted_idx])
+     outputs = model(tensor)
+     probs = torch.softmax(outputs, dim=1)
 
-    class_name = LABELS.get(str(predicted_idx), "Unknown")
+    # Top-3 predictions
+    top_probs, top_idxs = torch.topk(probs, 3)
+
+    results = []
+    for i in range(3):
+        idx = int(top_idxs[0][i])
+        conf = float(top_probs[0][i])
+
+        results.append({
+            "breed": LABELS.get(idx, "Unknown"),
+            "confidence": round(conf, 3)
+        })
 
     return {
-        "predicted_class": class_name,
-        "confidence": round(confidence, 3)  # optional, useful for frontend
-    }
-
+    "top_predictions": results
+}
 @app.get("/breeds")
 def get_breeds():
     if LABELS:
